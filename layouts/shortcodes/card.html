@@ -1,9 +1,12 @@
 {{ $img := .Get "img" }}
 {{ $command := .Get "command" }}
 {{ $options := .Get "options" }}
-
 {{ $original := .Page.Resources.GetMatch (printf "*%s*" $img) }}
 {{ $new := "" }}
+
+{{ with .Page.Resources.ByType "image" }}
+<img src="{{ . }}" />
+{{ end }}
 
 {{ if eq $command "Fit" }}
   {{ $new = $original.Fit $options }}
@@ -13,14 +16,9 @@
   {{ $new = $original.Resize $options }}
 {{ else if eq $command "Original" }}
   {{ $new = $original }}
-{{ else }}
-  {{ errorf "Invalid image processing command: Must be one of Fit, Fill, Resize, Original." }}
 {{ end }}
 
 <div class="card row flex-center" style="">
-  <a href="{{ $original.Permalink }}" class="img-link">
-    <img src="{{ $new.Permalink }}">
-  </a>
   <div class="card-body">
   {{ with (.Get "title" )}}
     <h4 class="card-title">{{ . | markdownify }}</h4>

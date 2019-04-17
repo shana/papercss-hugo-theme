@@ -7,13 +7,18 @@ body {
 }
 
 /* anchors */
-a,
+a {
+  color: #41403e;
+  text-decoration: none
+}
+
+/*a,
 a:visited {
   color: rgb(0, 0, 238);
   background-image: none;
   text-decoration: underline;
 }
-
+*/
 /* navbar */
 nav a,
 nav a:visited {
