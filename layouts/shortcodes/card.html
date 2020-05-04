@@ -4,10 +4,9 @@
 {{ $original := .Page.Resources.GetMatch (printf "*%s*" $img) }}
 {{ $new := "" }}
 
-{{ with .Page.Resources.ByType "image" }}
-<img src="{{ . }}" />
+{{ range .Page.Resources.Match "header" }}
+<img src="{{ .RelPermalink }}" />
 {{ end }}
-
 {{ if eq $command "Fit" }}
   {{ $new = $original.Fit $options }}
 {{ else if eq $command "Fill" }}
