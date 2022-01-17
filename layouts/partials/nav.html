@@ -1,6 +1,20 @@
 <nav class="border split-nav">
   <div class="nav-brand">
-    <h3><a href="/">{{ .Site.Title }}</a></h3>
+    {{ $homeUrl := "https://spoiledcat.com" }}
+    {{ $blogUrl := "https://blog.worldofcoding.com" }}
+    {{ if eq hugo.Environment "development" }}
+      {{ $homeUrl = "/" }}
+      {{ $blogUrl = "/blog" }}
+    {{ end }}
+
+    {{ $title := .Title }}
+    {{ if .IsHome }}
+      {{ $title = .Site.Title }}
+    {{ else if eq .Section "blog" }}
+      {{ $title = "World of Coding" }}
+    {{ end }}
+    <h3>
+    {{ if not .IsHome }}<a href="{{ $homeUrl }}">Home</a> | {{ end }}{{ if eq .Section "blog" }}<a href="{{ $blogUrl }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</h3>
   </div>
   <div class="collapsible">
     <input id="collapsible1" type="checkbox" name="collapsible1">
@@ -14,7 +28,7 @@
     <div class="collapsible-body">
       <ul class="inline">
       {{ range .Site.Menus.nav }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        <li>{{ if eq .URL "/blog" }}<a href="{{ $blogUrl }}">{{ else }}<a href="{{ $homeUrl }}{{ .URL }}">{{ end }}{{ .Name }}</a></li>
       {{ end }}
       </ul>
     </div>

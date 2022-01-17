@@ -1,7 +1,7 @@
 <h1>{{ .Title }}</h1>
-{{ range where .Pages.ByPublishDate.Reverse "Section" "post" }}
+{{ range where .Pages.ByPublishDate.Reverse "Section" "blog" }}
   <h2 class="post-list {{ if ne .Params.summary false }}summary{{ end }}">
-    <a href="{{ .Permalink }}">
+    <a href="{{ .RelPermalink }}">
       {{ .Title }}
     </a>
   </h2>
