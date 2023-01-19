@@ -46,9 +46,26 @@ blockquote {
 
 /* toc */
 .toc {
-  padding: 1em;
+  padding-left: 1em;
   margin-top: 1em;
+  width: 70%;
+
 }
+
 .toc h2 {
   font-size: 1.3em;
+}
+
+.toc > nav {
+  width: 95%;
+  margin-bottom: 1em;
+}
+
+.toc > nav > ul {
+  margin-top: -0.5em;
+  margin-left:  -1em;
+}
+
+.toc > nav ul li {
+  padding-top: 0.5em;
 }
