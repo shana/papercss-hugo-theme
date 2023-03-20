@@ -10,7 +10,7 @@
 
 {{ range .Page.Resources.Match "header" }}
 <div style="background-color:{{ $bgcolor }}">
-<img alt="a" src="{{ .RelPermalink }}"/>
+<img src="{{ .RelPermalink }}"/>
 </div>
 {{ end }}
 {{ if eq $command "Fit" }}
