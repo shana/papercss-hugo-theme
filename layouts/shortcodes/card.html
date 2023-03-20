@@ -3,9 +3,15 @@
 {{ $options := .Get "options" }}
 {{ $original := .Page.Resources.GetMatch (printf "*%s*" $img) }}
 {{ $new := "" }}
+{{ $bgcolor := .Get "bgcolor" }}
+{{ if eq $bgcolor "" }}
+  {{ $bgcolor = "transparent" }}
+{{ end }}
 
 {{ range .Page.Resources.Match "header" }}
-<img src="{{ .RelPermalink }}" />
+<div style="background-color:{{ $bgcolor }}">
+<img alt="a" src="{{ .RelPermalink }}"/>
+</div>
 {{ end }}
 {{ if eq $command "Fit" }}
   {{ $new = $original.Fit $options }}
@@ -26,7 +32,7 @@
     <h5 class="card-subtitle">{{ . | markdownify }}</h5>
   {{ end }}
   {{ with (.Get "text") }}
-    <p class="card-text">{{ . | markdownify }}</p>
+    <p class="card-text">{{ . | safeHTML }}</p>
   {{ end }}
   </div>
 </div>
