@@ -1,0 +1,33 @@
+{{ $f := index (.Headings) 0 -}}
+{{ $start := page.Params.toc.startLevel | default site.Params.toc.startLevel -}}
+{{ $end := page.Params.toc.endLevel | default site.Params.toc.endLevel -}}
+{{ if and (ge $f.Level $start)
+          (le $f.Level $end) -}}
+<ol>
+{{ end -}}
+
+{{ range .Headings }}
+  {{ if and (ge $f.Level $start)
+            (le $f.Level $end) -}}
+  <li>
+    <a href="#{{ .ID }}">
+      {{ .Title | htmlUnescape | plainify }}
+    </a>
+  {{ end -}}
+
+  {{ $l := .Headings | len -}}
+  {{ if gt $l 0 -}}
+    {{ partial "toc-entry.html" . }}
+  {{ end -}}
+
+  {{ if and (ge $f.Level $start)
+            (le $f.Level $end) -}}
+  </li>
+  {{ end -}}
+
+{{ end -}}
+
+{{ if and (ge $f.Level $start)
+          (le $f.Level $end) -}}
+</ol>
+{{ end -}}

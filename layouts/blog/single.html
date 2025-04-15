@@ -2,20 +2,19 @@
 
 <h2 class="post-title">{{ .Title }}</h2>
 
-{{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+{{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" -}}
 <strong>Publish date: </strong>{{ .PublishDate.Format $dateFormat }}
 <br>
 {{ with .Params.tags }}
   <strong>Tags: </strong>
-  {{ range . }}
+  {{ range . -}}
     <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
-  {{ end }}
-{{ end }}
+  {{ end -}}
+{{ end -}}
+{{ if not .Params.toc.disabled -}}
+  {{ partial "toc.html" . -}}
+{{ end -}}
 
-{{ if ne .Params.toc false }}
-  {{ partial "toc.html" . }}
-{{ end }}
+{{ .Content -}}
 
-{{ .Content }}
-  
-{{ end }}
+{{ end -}}

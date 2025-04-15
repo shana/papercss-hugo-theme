@@ -1,18 +1,18 @@
 <nav class="border split-nav">
   <div class="nav-brand">
-    {{ $homeUrl := "https://spoiledcat.com" }}
-    {{ $blogUrl := "https://blog.worldofcoding.com" }}
-    {{ if eq hugo.Environment "development" }}
-      {{ $homeUrl = "/" }}
-      {{ $blogUrl = "/blog" }}
-    {{ end }}
+    {{ $homeUrl := "https://spoiledcat.com" -}}
+    {{ $blogUrl := "https://blog.worldofcoding.com" -}}
+    {{ if eq hugo.Environment "development" -}}
+      {{ $homeUrl = "/" -}}
+      {{ $blogUrl = "/blog" -}}
+    {{ end -}}
 
-    {{ $title := .Title }}
-    {{ if .IsHome }}
-      {{ $title = .Site.Title }}
-    {{ else if eq .Section "blog" }}
-      {{ $title = "World of Coding" }}
-    {{ end }}
+    {{ $title := .Title -}}
+    {{ if .IsHome -}}
+      {{ $title = .Site.Title -}}
+    {{ else if eq .Section "blog" -}}
+      {{ $title = "World of Coding" -}}
+    {{ end -}}
     <h3>
     {{ if not .IsHome }}<a href="{{ $homeUrl }}">Home</a> | {{ end }}{{ if eq .Section "blog" }}<a href="{{ $blogUrl }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</h3>
   </div>
