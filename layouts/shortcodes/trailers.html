@@ -1,0 +1,6 @@
+<div>
+{{ with (.Get "youtube" )}}<h4 style="margin: 1rem 0 1rem 0;text-align: center"><a href="https://www.youtube.com/watch?v={{ . }}">{{ end }}{{ .Get "name" }}</a></h4>
+{{ with (.Get "youtube" )}}
+  <iframe class="image-margin" src="https://www.youtube.com/embed/{{ . }}" frameborder="0" allowfullscreen></iframe>
+{{ end }}
+</div>

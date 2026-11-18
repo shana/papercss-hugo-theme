@@ -1,4 +1,16 @@
 <h1>{{ .Title }}</h1>
+{{ if eq .Section "news" -}}
+{{ range where .Pages.ByPublishDate.Reverse "Section" "news" }}
+  <h2 class="post-list {{ if ne .Params.summary false }}summary{{ end }}">
+    <a href="{{ .RelPermalink }}">
+      {{ .Title }}
+    </a>
+  </h2>
+  {{ if ne .Params.summary false }}
+    {{ .Summary }}
+  {{ end }}
+{{ end }}
+{{ else if eq .Section "blog" -}}
 {{ range where .Pages.ByPublishDate.Reverse "Section" "blog" }}
   <h2 class="post-list {{ if ne .Params.summary false }}summary{{ end }}">
     <a href="{{ .RelPermalink }}">
@@ -8,4 +20,5 @@
   {{ if ne .Params.summary false }}
     {{ .Summary }}
   {{ end }}
+{{ end }}
 {{ end }}

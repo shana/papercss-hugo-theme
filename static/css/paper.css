@@ -53,10 +53,16 @@ nav,
 section {
   display: block
 }
+
 h1 {
   font-size: 2em;
-  margin: .67em 0
+  margin: .3em 0 0 0
 }
+h5.card-subtitle {
+  color: #0071de;
+  margin: -.2em 0 1em .2em
+}
+
 figcaption,
 figure,
 main {
@@ -1361,6 +1367,22 @@ button.btn-muted:hover:active {
   transform: translate3d(0,2px,0);
   box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3)
 }
+
+.card2 {
+  transition: none;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  -webkit-backface-visibility: hidden;
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  will-change: no;
+  word-wrap: break-word
+}
+
+.card2:hover {
+}
+
 .card .card-footer,
 .card .card-header {
   background-color: rgba(0,0,0,.03);
@@ -2372,4 +2394,21 @@ nav .collapsible > button {
   nav .collapsible > button {
     display: block
   }
+}
+
+.image-margin {
+  border-bottom-left-radius: 0px 0px;
+  border-bottom-right-radius: 0px 0px;
+  border-top-left-radius: 0px 0px;
+  border-top-right-radius: 0px 0px;
+  margin: 1rem 0 1rem 0;
+}
+
+iframe {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  height:calc(100vh - 220px);
+  width:calc(100vw);
+  box-sizing: border-box;
 }

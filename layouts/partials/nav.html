@@ -10,6 +10,8 @@
     {{ $title := .Title -}}
     {{ if .IsHome -}}
       {{ $title = .Site.Title -}}
+    {{ else if eq .Section "news" -}}
+      {{ $title = "News" -}}
     {{ else if eq .Section "blog" -}}
       {{ $title = "World of Coding" -}}
     {{ end -}}
